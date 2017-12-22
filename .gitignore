@@ -1,0 +1,8 @@
+/node_modules/*
+*.log
+README.md
+seed.json
+/test/*
+LICENSE
+/config/*
+
