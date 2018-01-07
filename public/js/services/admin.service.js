@@ -5,7 +5,8 @@ angular.module('SumoSurvey')
 
 			var urlAfterLogin = '/admin/list';
 			var loggedIn = false;
-			var currentSurvey = null;
+			var currentGym = null;
+            var currentQuestion = null;
 
 			AdminService.LoggedIn = function () {
 				return loggedIn;
@@ -50,13 +51,21 @@ angular.module('SumoSurvey')
 				return urlAfterLogin;
 			}
 
-			AdminService.setCurrentSurvey = function (survey) {
-				currentSurvey = survey;
-			};
-
-			AdminService.getCurrentSurvey = function () {
-				return currentSurvey;
+			AdminService.setCurrentGym = function (gym) {
+				currentGym = gym;
+            };
+            AdminService.getCurrentGym = function () {
+				return currentGym;
 			}
+            /*
+            AdminService.setQuestion = function (question) {
+				currentQuestion = question;
+            };
+            AdminService.getQuestion = function () {
+				return currentQuestion;
+			};*/
+
+			
 
 			return AdminService;
 		}]);

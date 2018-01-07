@@ -2,6 +2,7 @@ var Router = require('express').Router;
 var admin = require('./admin');
 var options = require('./options');
 var surveys = require('./surveys');
+var gyms = require('./gyms');
 var debug = require('debug')('routes');
 
 
@@ -19,6 +20,6 @@ router
   })
   .use('/admin', admin)
   .use('/options', options)
-  .use('/surveys', surveys);
-
+  .use('/surveys', surveys)
+  .use('/gyms', gyms);
 module.exports = router;

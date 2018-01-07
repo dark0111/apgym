@@ -3,7 +3,8 @@ module.exports = function (sequelize, DataTypes) {
   var Feedback = sequelize.define('Feedback', {
     feedbackId: {
         type: DataTypes.INTEGER,
-        primaryKey: true
+        primaryKey: true,
+        autoIncrement: true
     },
     feedback_date: DataTypes.DATE,
     rating1: DataTypes.INTEGER,

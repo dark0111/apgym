@@ -6,7 +6,12 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
   <link rel="stylesheet" href="/lib/bootstrap.min.css">
   <link rel="stylesheet" href="/css/app.css">
+  <link href="https://gitcdn.github.io/bootstrap-toggle/2.2.2/css/bootstrap-toggle.min.css" rel="stylesheet">
+
+  
   <base href="/">
+
+ 
 </head>
 
 <body ng-app="SumoSurvey">
@@ -20,7 +25,7 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-        <a class="navbar-brand" href="/">AP Cloud Gym Feedback</a>
+        <a class="navbar-brand" href="/admin/list">AP Cloud Gym - Admin</a>
       </div>
       <!-- Collect the nav links, forms, and other content for toggling -->
       <div class="collapse navbar-collapse" id="navbar-collapse">
@@ -29,13 +34,13 @@
             <a href="#" ng-click="navVm.AdminLogIn()">Admin Login</a>
           </li>
           <li ng-show="navVm.AdminLoggedIn()" class="dropdown">
-            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Admin <span class="caret"></span></a>
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">YJH(admin) <span class="caret"></span></a>
             <ul class="dropdown-menu">
               <li>
-                <a href="/admin/form">New Survey Question</a>
+                <a href="/admin/form">Create Gym</a>
               </li>
               <li>
-                <a href="/admin/list">List Surveys</a>
+                <a href="/admin/list">Gym List</a>
               </li>
               <li role="separator" class="divider"></li>
               <li>
@@ -53,8 +58,8 @@
 
   <hr />
   <footer class="text-center">
-    <section class="copyright">ICC Korea &copy; 2017</section>
-    <section class="github">Contact : icckorea@kr.ibm.com</section>
+    <section class="copyright">ICC Korea &copy; 2018</section>
+    <section class="github">Contact : yjh@kr.ibm.com</section>
   </footer>
 
   <!-- Library Scripts -->
@@ -65,17 +70,26 @@
   <script src="/lib/angular-route.min.js"></script>
   <script src="/lib/angular-touch.min.js"></script>
   <script src="/lib/restangular.min.js"></script>
-
+  
+  <!--This is for toggle button / JH 20180103-->
+  <script src="https://gitcdn.github.io/bootstrap-toggle/2.2.2/js/bootstrap-toggle.min.js"></script>
+  
+  <!--This is for Dateficker/ JH 20180103-->
+  <script src="https://cdn.rawgit.com/atatanasov/gijgo/master/dist/combined/js/gijgo.min.js" type="text/javascript"></script>
+  <link href="https://cdn.rawgit.com/atatanasov/gijgo/master/dist/combined/css/gijgo.min.css" rel="stylesheet" type="text/css" />
+  
   <!-- App Scripts -->
   <script src="/js/app.js"></script>
   <script src="/js/services/admin.service.js"></script>
   <script src="/js/services/option.service.js"></script>
   <script src="/js/services/survey.service.js"></script>
+  <script src="/js/services/gym.service.js"></script>
   <script src="/js/controllers/nav.controller.js"></script>
   <script src="/js/controllers/admin.controller.js"></script>
   <script src="/js/controllers/login.controller.js"></script>
   <script src="/js/controllers/form.controller.js"></script>
   <script src="/js/controllers/survey.controller.js"></script>
+  <script src="/js/controllers/gym.controller.js"></script>
 </body>
 
 </html>

@@ -44,17 +44,19 @@ angular.module('SumoSurvey', [
           templateUrl: 'partials/login.html'
         })
         .when('/admin/list', {
-          templateUrl: 'partials/list.html',
-          resolve: {
-            loggedIn: checkLoggedin
-          }
-        })
-        .when('/admin/form/:survey_id?', {
-          templateUrl: 'partials/form.html',
-          resolve: {
-            loggedIn: checkLoggedin
-          }
-        })
+            templateUrl: 'partials/gymlist.html',
+            resolve: {
+              loggedIn: checkLoggedin
+            }
+          })
+
+
+        .when('/admin/form/:gym_id?', {
+            templateUrl: 'partials/form.html',
+            resolve: {
+              loggedIn: checkLoggedin
+            }
+          })
         .otherwise({
           redirectTo: '/'
         });

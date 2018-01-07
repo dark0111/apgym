@@ -1,0 +1,98 @@
+
+{
+    "questions": [{
+        "question_text":"The Talk was engaging and compelling.",
+        "question_type":"rate",
+        "question_group":"1",
+        "question_order":"1"
+    },
+    {
+        "question_text":"The key message was clear.",
+        "question_type":"rate",
+        "question_group":"1",
+        "question_order":"2"
+    },
+    {
+        "question_text":"The “Why IBM” differentiation was clear.",
+        "question_type":"rate",
+        "question_group":"1",
+        "question_order":"3"
+    },
+    {
+        "question_text":"The Talk content was applicable to the 2 Executive Client roles and personas.",
+        "question_type":"rate",
+        "question_group":"1",
+        "question_order":"4"
+    },
+    {
+        "question_text":"The Talk content was applicable to the account/ client background information provided.",
+        "question_type":"rate",
+        "question_group":"1",
+        "question_order":"5"
+    },
+    {
+        "question_text":"The Talk effectively and clearly positioned the benefits of  IBM Cloud/ Cognitive  for the client.",
+        "question_type":"rate",
+        "question_group":"1",
+        "question_order":"6"
+    },
+    {
+        "question_text":"The speaker’s delivery was confident and convincing.",
+        "question_type":"rate",
+        "question_group":"1",
+        "question_order":"7"
+    },
+    {
+        "question_text":"The “Why should they change?” message was clear.",
+        "question_type":"rate",
+        "question_group":"1",
+        "question_order":"8"
+    },
+    {
+        "question_text":"The “Why act now?” message was clear.",
+        "question_type":"rate",
+        "question_group":"1",
+        "question_order":"9"
+    },
+    {
+        "question_text":"The talk closed in a strong and memorable way.",
+        "question_type":"rate",
+        "question_group":"1",
+        "question_order":"10"
+    },
+    {
+        "question_text":"What do you think the speaker could do to improve the talk?",
+        "question_type":"text",
+        "question_group":"1",
+        "question_order":"11"
+    }],
+    "gyms": [{
+        "gym_title":"2nd AP Cloud Gym in Korea",
+        "gym_market":"KOREA",
+        "gym_location":"seoul",
+        "gym_description":"for telecommunication industry ",
+        "gym_date":"2018-02-21",
+        "gym_questionGroup":0,
+        "gym_stat":false
+    },
+    {
+        "gym_title":"1st AP Cloud Gym in Vietnam",
+        "gym_market":"ASEAN",
+        "gym_location":"Hanoi",
+        "gym_description":"This is TEST GYM",
+        "gym_date":"2016-01-31",
+        "gym_questionGroup":1,
+        "gym_stat":true
+    },
+    {
+        "gym_title":"1st AP Cloud Gym in Australia",
+        "gym_market":"ASEAN",
+        "gym_location":"Melbourne",
+        "gym_description":"This is TEST GYM",
+        "gym_date":"2018-01-31",
+        "gym_questionGroup":1,
+        "gym_stat":true
+    }
+    ]
+
+}

@@ -1,36 +1,78 @@
+<style>
+.list-group-item {
+    padding: 3px 10px
+}
+</style>
 <div ng-controller="FormController as formVm" class="form-view main-view panel panel-primary">
   <div class="panel-heading">
-    <h3 class="text-center">Survey Question Form</h3>
+    <h3 class="text-center">{{formVm.gym.id ? 'Edit Gym' : 'Create Gym'}}</h3>
   </div>
   <div class="panel-body center-block">
+    <!-- <div class="row">
+        <input type="text" class="form-control" ng-model="gym.gym_title" placeholder="Gym Title" />
+    </div> <hr />-->
+    
     <div class="row">
-      <textarea class="form-control" ng-model="formVm.survey.question_text" placeholder="Question Text"></textarea>
+        <label class="text-muted">Market</label><br/>
+        <label class="text-muted">
+            <input type="radio" ng-model="formVm.gym.gym_market" value="KOREA" >
+            KOREA &nbsp;&nbsp;
+        </label>
+        <label class="text-muted">
+            <input type="radio" ng-model="formVm.gym.gym_market" value="ASEAN">
+            ASEAN&nbsp;&nbsp;
+        </label>
+        <label class="text-muted">
+            <input type="radio" ng-model="formVm.gym.gym_market" value="AN/Z" >
+            AN/Z&nbsp;&nbsp;
+        </label>
+        <label class="list-unstyled text-muted">
+            <input type="radio" ng-model="formVm.gym.gym_market" value="ISA">
+            ISA&nbsp;&nbsp;
+        </label>
     </div>
     <hr />
-    <div class="row" ng-repeat="option in formVm.survey.Options">
-      <div class="input-group">
-        <input type="text" class="form-control" ng-model="option.text" placeholder="Existing Option" />
-        <span class="input-group-btn">
-          <button class="btn btn-primary" ng-click="formVm.removeOption(formVm.survey, option)">Remove</button>
-        </span>
-      </div>
-    </div>
     <div class="row">
-      <div class="input-group">
-        <input type="text" class="form-control" ng-model="formVm.newOption.text" placeholder="New Option" />
-        <span class="input-group-btn">
-          <button type="button" class="btn btn-primary" ng-click="formVm.addOption(formVm.newOption)"
-            ng-disabled="formVm.newOption.text.length === 0">Add</button>
-        </span>
-      </div>
+        <input type="text" class="form-control" ng-model="formVm.gym.gym_location" placeholder="Location" />
     </div>
+    <div class="row" id="dpStartDate">
+        <input id="datepicker" readonly type="text" class="datepicker" width="270" ng-model="formVm.gym.gym_date"  />
+    </div>
+
+    <div class="row">
+        <textarea class="form-control" ng-model="formVm.gym.gym_description" placeholder="Description"></textarea>
+    </div>
+    <hr />
+  
+    <div class="row">
+        <label>Questions</label>
+        <li class="list-group-item" ng-repeat="question in formVm.questions | orderBy:'question_order'">
+                {{question.question_order}}.{{question.question_text}}
+        </li>
+    </div>
+    
   </div>
   <div class="panel-footer text-center">
-    <button type="button" class="btn" ng-click="formVm.cancel(formVm.survey)">
+    <button type="button" class="btn" ng-click="formVm.cancel(formVm.gym)">
       Cancel
     </button>
-    <button type="button" class="btn btn-primary" ng-click="formVm.submitSurvey(formVm.survey, formVm.selectedOption)" ng-disabled="formVm.survey.question_text.length === 0 || formVm.survey.Options.length === 0">
+    <button type="button" class="btn btn-primary" ng-click="formVm.submitGym(formVm.gym)" ng-disabled="formVm.gym.gym_location.length === 0">
       Submit
     </button>
   </div>
 </div>
+<script>
+$(document).ready(function () {
+    //$('.datepicker').datepicker({
+    //    uiLibrary: 'bootstrap',
+    //    value: '01/01/2015'
+    //});
+   
+    //$('.datepicker').datepicker('update');
+    //$('#datepicker').datepicker('setDate', new Date(2006, 11, 24));
+    //$('#datepicker').datepicker('update');
+    //$("#datepicker").datepicker("setValue", "02-17-2012");
+
+});
+
+</script>

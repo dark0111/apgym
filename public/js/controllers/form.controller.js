@@ -1,66 +1,103 @@
 angular.module('SumoSurvey')
-	.controller('FormController', ['AdminService', 'SurveyService', 'OptionService', '$routeParams', '$location',
-		function (AdminService, SurveyService, OptionService, $routeParams, $location) {
+	.controller('FormController', ['AdminService', 'GymService', '$routeParams', '$location','$filter',
+		function (AdminService, GymService, $routeParams, $location,$filter) {
 			var formVm = this;
 
 			if (!AdminService.LoggedIn()) {
 				$location.url('/login');
 			}
-
-			formVm.survey = {
-				question_text: '',
-				Options: []
-			};
-			formVm.newOption = {
-				text: ''
-			};
-			if ($routeParams.survey_id) {
-				SurveyService.getSurvey($routeParams.survey_id, function (survey) {
-					if (survey) {
-						formVm.survey = survey;
+           
+			formVm.gym = {
+				gym_market: '',
+                gym_location: '',
+                gym_date: '',
+                gym_description: '',
+                gym_stat:'true'
+            };
+            formVm.questions=[];
+            //formVm.questions = GymService.getQuestions()
+            GymService.getQuestions(1,function (questions) {
+                if (questions) {
+                    formVm.questions = questions;
+                }
+            });
+            
+			if ($routeParams.gym_id) {
+                console.log('666-222')
+                GymService.getGym($routeParams.gym_id, function (gym) {
+					if (gym) {
+						formVm.gym = gym;
 					}
 				});
 			} else {
-				formVm.survey = AdminService.getCurrentSurvey() || {
-					question_text: '',
-					Options: []
-				};
+             
+				formVm.gym = AdminService.getCurrentGym() || {
+					gym_market: '',
+                    gym_location: '',
+                    gym_date: '',
+                    gym_description: '',
+                    gym_stat:'true'
+                };
+                
+                    
 			}
 
-			formVm.addOption = function (option) {
-				var newOption = {
-					text: option.text || '',
-					answer_count: 0
-				}
-				formVm.survey.Options.push(newOption);
-				formVm.newOption.text = '';
-			};
-
-			var deletedOptions = [];
-
-			formVm.removeOption = function (survey, option) {
-				deletedOptions.push(option);
-				survey.Options.splice(formVm.survey.Options.indexOf(option), 1);
-			};
-
-			formVm.submitSurvey = function (survey) {
-				if (!survey.Options || survey.Options.length < 1) {
-					formVm.errorMessage = 'Survey must have at least one option to choose from.';
-					return;
-				}
-				deletedOptions.forEach(function (option) {
-					OptionService.deleteOption(option);
-				});
-				SurveyService.updateOrCreateSurvey(survey, function () {
+			formVm.submitGym = function (gym) {
+				GymService.updateOrCreateGym(gym, function () {
 					$location.url('/admin/list');
 				});
 			};
 
 			formVm.cancel = function() {
-				formVm.survey = {
-					question_text: '',
-					Options: []
+				formVm.gym = {
+					gym_market: '',
+                    gym_location: '',
+                    gym_date: '',
+                    gym_description: '',
+                    gym_stat:'true'
 				};
 				$location.url('/admin/list');
-			}
+            }
+            
+            $('.datepicker').datepicker({
+                uiLibrary: 'bootstrap',
+                format: 'yyyy-mm-dd',
+                value: formVm.gym.gym_date,
+                change: function (e) {
+                    formVm.gym.gym_date=$('.datepicker').val();
+                    console.log(JSON.stringify(e))
+                    //console.log($filter('date')(e.timeStamp, "yyyy-MM-dd"));
+                    //console.log()
+                    //console.log(format(new Date(e.timeStamp), 'MM/dd/yyyy'));
+                }
+            });
 		}]);
+        var format = function (time, format) {
+            var t = new Date(time);
+            var tf = function (i) { return (i < 10 ? '0' : '') + i };
+            return format.replace(/yyyy|MM|dd|HH|mm|ss/g, function (a) {
+                switch (a) {
+                    case 'yyyy':
+                        return tf(t.getFullYear());
+                        break;
+                    case 'MM':
+                        return tf(t.getMonth() + 1);
+                        break;
+                    case 'mm':
+                        return tf(t.getMinutes());
+                        break;
+                    case 'dd':
+                        return tf(t.getDate());
+                        break;
+                    case 'HH':
+                        return tf(t.getHours());
+                        break;
+                    case 'ss':
+                        return tf(t.getSeconds());
+                        break;
+                }
+            })
+        }
+ 
+
+          

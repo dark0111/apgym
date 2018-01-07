@@ -1,0 +1,104 @@
+<style>
+    .panel{
+        padding:0;
+        margin:0;
+    }
+    </style>
+<div class="main-view" ng-controller="AdminController as adminVm">
+    <div>
+        <button type="button" class="btn btn-primary" ng-click="adminVm.newGym()">Create Gym</button>
+        <button   style="float: right" type="button" class="btn btn-primary" ng-click="adminVm.exportGym()">Export Gym to Spredsheet</button>
+    </div><br/>
+    <ul class="list-group">
+      <li class="list-group-item">
+
+            <div class=" panel panel-primary panel-heading" >
+            <h3 class="text-center">Gym List</h3>
+            </div>
+      </li>
+      <li class="list-group-item" >
+            <div class="row">
+                <table class="table table-striped">
+                <thead>
+                    <tr>
+                    <th  width="100px" align=center>Gym ID</th>
+                    <th  width="100px">Status</th>
+                    <th  width="200px">Gym Date</th>
+                    <th  width="200px">Market</th>
+                    <th  >location</th>
+                    
+                    <th  width="150px">Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr ng-repeat="gym in adminVm.gyms">
+                        <td align=center>{{gym.id}}</td>
+                        <td>
+                                <!-- <input type="checkbox" checked data-toggle="toggle" ng-click="adminVm.statusUpdate(gym)"> -->
+                                <input type="checkbox" ng-model="gym.gym_stat" ng-click="adminVm.statusUpdate(gym)" >
+                                    <span ng-if="gym.gym_stat === true">
+                                        Active
+                                    </span>
+                                    <span ng-if="gym.gym_stat ===false">
+                                        Expired
+                                    </span>
+                                    
+                            </td>
+                        <td>{{gym.gym_date | date:'yyyy-MM-dd'}}</td>
+                        <td>{{gym.gym_market}}</td>
+                        <td>{{gym.gym_location}}</td>
+                        
+                        
+                        <td>
+                            <div class="btn-group btn-group-md">
+                            
+                                <button type="button" class="btn btn-primary" ng-click="adminVm.editGym(gym)">
+                                    Edit
+                                </button>
+                                <button type="button" class="btn btn-primary" ng-click="adminVm.deleteGym(gym)">
+                                    Delete
+                                </button>
+                            
+                            </div>
+                        </td>
+                    </tr>
+                    
+                </tbody>
+                </table>
+            </div>
+      </li>
+    </ul>
+    <nav>
+      <ul class="pagination">
+        <li ng-class="1 === adminVm.currentPage ? 'disabled' : ''">
+          <a href="#" ng-click="adminVm.goToPrevPage()" aria-label="Previous">
+            <span aria-hidden="true">&laquo;</span>
+          </a>
+        </li>
+        <li ng-repeat="page in adminVm.pages" ng-class="page === adminVm.currentPage ? 'active' : ''">
+          <a href="#" ng-click="adminVm.goToPage(page)">{{page}}</a>
+        </li>
+        <li ng-class="adminVm.numberOfPages === adminVm.currentPage ? 'disabled' : ''">
+          <a href="#" ng-click="adminVm.goToNextPage()" aria-label="Next">
+            <span aria-hidden="true">&raquo;</span>
+          </a>
+        </li>
+      </ul>
+    </nav>
+  </div>
+  
+
+  
+
+<script>
+//$("input[type=checkbox]").change(function() {
+ //       return confirm("you click one of the listed checkbox?");
+//});
+
+</script>
+<script>
+
+    //$('#toggle-one').bootstrapToggle('off');
+    //$('input[type=checkbox]').bootstrapToggle('off');
+
+</script>

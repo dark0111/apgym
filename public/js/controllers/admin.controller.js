@@ -1,61 +1,62 @@
 angular.module('SumoSurvey')
-	.controller('AdminController', ['AdminService', 'SurveyService', '$location',
-		function (AdminService, SurveyService, $location) {
+	.controller('AdminController', ['AdminService', 'GymService', '$location','$filter',
+		function (AdminService, GymService, $location,$filter) {
 			var adminVm = this;
 
 			adminVm.currentPage = 1;
 			adminVm.numberOfPages = 1;
 			adminVm.pages = [1];
 
-			adminVm.surveys = [];
+            adminVm.gyms = [];
+            adminVm.questions = [];
 			adminVm.totalAnswers = 0;
 
-			function setupSurveys() {
-				SurveyService.getSurveys(adminVm.currentPage, function (surveys) {
-					adminVm.surveys = surveys.slice();
-					adminVm.surveys.forEach(function (survey) {
-						survey.totalAnswers = survey.Options.reduce(function (sum, option) {
-							return sum + option.answer_count;
-						}, 0);
-					});
-				});
+			function setupGyms() {
+				GymService.getGyms(adminVm.currentPage, function (gyms) {
+					adminVm.gyms = gyms.slice();
+					
+                });
+                GymService.getQuestions(adminVm.currentPage, function (questions) {
+                    adminVm.questions = questions.slice();  
+                });
 			}
 
 			if (!AdminService.LoggedIn()) {
 				$location.url('/login');
 			} else {
-				SurveyService.getSurveyCount(function (count) {
+				GymService.getGymCount(function (count) {
 					adminVm.numberOfPages = Math.ceil(count / 10);
 					adminVm.pages = Array.apply(null, Array(adminVm.numberOfPages)).map(function (_, i) { return i + 1; });
 				});
-				setupSurveys();
+				setupGyms();
 			}
 
 			adminVm.goToPrevPage = function () {
 				if (adminVm.currentPage > 1) {
 					adminVm.currentPage--;
-					setupSurveys();
+					setupGyms();
 				}
 			};
 			adminVm.goToNextPage = function () {
 				if (adminVm.currentPage + 1 <= adminVm.numberOfPages) {
 					adminVm.currentPage++;
-					setupSurveys();
+					setupGyms();
 				}
 			};
 			adminVm.goToPage = function (page) {
 				if (page <= adminVm.numberOfPages && page !== adminVm.currentPage) {
 					adminVm.currentPage = page;
-					setupSurveys();
+					setupGyms();
 				}
 			};
 
-			adminVm.newSurvey = function () {
-				AdminService.setCurrentSurvey(null);
+			adminVm.newGym = function () {
+				AdminService.setCurrentGym(null);
 				$location.url('/admin/form');
 			};
 
-			var resultsActive = {};
+            var resultsActive = {};
+            var resultsStatus = {};
 			adminVm.toggleResults = function (id) {
 				if (resultsActive[id] === undefined) {
 					resultsActive[id] = true;
@@ -68,23 +69,45 @@ angular.module('SumoSurvey')
 			};
 			adminVm.activeButtonClass = function (id) {
 				return resultsActive[id] ? 'active' : '';
+            };
+            adminVm.exportGym = function () {
+				alert('Sorry, I am developing this function. it will be done soon.')
+			};
+            adminVm.statusUpdate = function (gym) {              
+                
+                if (confirm("Do you want to chage the status of Gym?"))
+                {
+                    
+                   gym.gym_date=$filter('date')(gym.gym_date, "yyyy-MM-dd");
+                   //alert(gym.id+"/"+gym.gym_stat+"/"+gym.gym_date)
+                   GymService.updateOrCreateGym(gym, function () {
+                        $location.url('/admin/list');
+                    });
+                    //GymService.updateOrCreateGym(gym, function () {
+                        //$location.url('/admin/list');
+                    //});
+                    AdminService.setCurrentGym(gym);
+				    //$location.url('/admin/form');
+                }
+				return resultsStatus[gym] ? 'active' : '';
 			};
 
-			adminVm.editSurvey = function (survey) {
-				AdminService.setCurrentSurvey(survey);
+			adminVm.editGym = function (gym) {
+                gym.gym_date=$filter('date')(gym.gym_date, "yyyy-MM-dd");
+                AdminService.setCurrentGym(gym);
+                
 				$location.url('/admin/form');
 			};
 
-			adminVm.deleteSurvey = function (survey) {
-				if (confirm('Are you sure you want to delete this Survey Question?')) {
-					SurveyService.deleteSurvey(survey, function () {
-						adminVm.surveys.splice(adminVm.surveys.indexOf(survey), 1);
-						SurveyService.getSurveyCount(function (count) {
+			adminVm.deleteGym = function (gym) {
+				if (confirm('Are you sure you want to delete this Gym Question?-')) {
+					GymService.deleteGym(gym, function () {
+						adminVm.gyms.splice(adminVm.gyms.indexOf(gym), 1);
+						GymService.getGymCount(function (count) {
 							adminVm.numberOfPages = Math.ceil(count / 10);
 							adminVm.pages = Array.apply(null, Array(adminVm.numberOfPages)).map(function (_, i) { return i + 1; });
 						});
-						setupSurveys();
-
+						setupGyms();
 					});
 				}
 			};

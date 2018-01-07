@@ -15,7 +15,7 @@ var seed = require('./utils/seed');
 require('./models'); // init sequelize models
 
 sequelize.sync({ force: true }).then(function () {
-  seed();
+  seed(); 
   var app = createServerApp();
   var server = app.listen(app.get('port'), function () {
     debug('Express server listening on port ' + server.address().port);
@@ -75,7 +75,7 @@ function createServerApp() {
     });
   });
 
-  app.set('port', process.env.PORT || 3000);
+  app.set('port', process.env.PORT || 4000);
 
   return app;
 }
