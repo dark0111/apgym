@@ -9,6 +9,9 @@ var Survey = models.Survey;
 var Option = models.Option;
 var Question = models.Question;
 var Gym = models.Gym;
+var Feedback = models.Feedback;
+var Speaker = models.Speaker;
+var User = models.User;
 
 module.exports = function seed() {
   debug('Seeding Admin Password');
@@ -39,15 +42,31 @@ module.exports = function seed() {
 //for jh ##############################################
   debug('Seeding Question Data');
   Question.count().then(function (questionCount) {
-    debug('Question Count: ' + questionCount);
+
     if (questionCount === 0) {
       addQuestions();
     }
   });
   Gym.count().then(function (gymCount) {
-    debug('Gym Count: ' + gymCount);
+    
     if (gymCount === 0) {
       addGyms();
+    }
+  });
+  Speaker.count().then(function (speakerCount) {
+
+    if (speakerCount === 0) {
+      addSpeakers();
+    }
+  });
+  Feedback.count().then(function (feedbackCount) {
+    if (feedbackCount === 0) {
+      addFeedbacks();
+    }
+  });
+  User.count().then(function (userCount) {
+    if (userCount === 0) {
+      addUsers();
     }
   });
 }
@@ -76,6 +95,62 @@ function addGyms() {
         gym_stat:gymToCreate.gym_stat
       }).then(function (createdGym) {
         debug('Seed gym Created.');
+      });
+    });
+}
+
+function addSpeakers() {
+    seedDatagym.speakers.forEach(function (speakerToCreate) {
+      Speaker.create({
+        speaker_w3_id:speakerToCreate.speaker_w3_id,
+        speaker_gym:speakerToCreate.speaker_gym,
+        speaker_name:speakerToCreate.speaker_name,
+        speaker_market:speakerToCreate.speaker_market,
+        speaker_location:speakerToCreate.speaker_location,
+        speaker_account:speakerToCreate.speaker_account,
+        speaker_client_background:speakerToCreate.speaker_client_background,
+        speaker_sales_journey:speakerToCreate.speaker_sales_journey,
+        speaker_cloud_pattern:speakerToCreate.speaker_cloud_pattern,
+        speaker_cloud_type:speakerToCreate.speaker_cloud_type,
+        speaker_key_message:speakerToCreate.speaker_key_message,
+        speaker_client_role:speakerToCreate.speaker_client_role,
+        speaker_reg_date:speakerToCreate.speaker_reg_date
+      }).then(function (createdSpeaker) {
+        debug('Seed Speaker Created.');
+      });
+    });
+}
+function addUsers() {
+    seedDatagym.users.forEach(function (userToCreate) {
+      User.create({
+        user_w3_id:userToCreate.user_w3_id,
+        username:userToCreate.username,
+        user_call:userToCreate.user_call
+      }).then(function (createduser) {
+        debug('Seed user Created.');
+      });
+    });
+}
+function addFeedbacks() {
+    seedDatagym.feedbacks.forEach(function (feedbackToCreate) {
+      Feedback.create({
+        feedback_date: feedbackToCreate.feedback_date,
+        rating1:feedbackToCreate.rating1,
+        rating2:feedbackToCreate.rating2,
+        rating3:feedbackToCreate.rating3,
+        rating4:feedbackToCreate.rating4,
+        rating5:feedbackToCreate.rating5,
+        rating6:feedbackToCreate.rating6,
+        rating7:feedbackToCreate.rating7,
+        rating8:feedbackToCreate.rating8,
+        rating9:feedbackToCreate.rating9,
+        rating10:feedbackToCreate.rating10,
+        comment1:feedbackToCreate.comment1,
+        GymId:feedbackToCreate.GymId,
+        SpeakerId:feedbackToCreate.SpeakerId,
+        feedback_user:feedbackToCreate.feedback_user
+      }).then(function (createdFeedback) {
+        debug('Seed feedback Created.');
       });
     });
 }

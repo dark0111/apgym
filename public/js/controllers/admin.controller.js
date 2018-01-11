@@ -22,7 +22,7 @@ angular.module('SumoSurvey')
 			}
 
 			if (!AdminService.LoggedIn()) {
-				$location.url('/login');
+				$location.url('/admin/login');
 			} else {
 				GymService.getGymCount(function (count) {
 					adminVm.numberOfPages = Math.ceil(count / 10);
@@ -71,7 +71,10 @@ angular.module('SumoSurvey')
 				return resultsActive[id] ? 'active' : '';
             };
             adminVm.exportGym = function () {
-				alert('Sorry, I am developing this function. it will be done soon.')
+                //alert('I am developing now. it will be done soon.')
+                //$location.url('/excelexport/admin');
+                location.href='/exportexcel';
+                //$location.path('/exportexcel');  
 			};
             adminVm.statusUpdate = function (gym) {              
                 

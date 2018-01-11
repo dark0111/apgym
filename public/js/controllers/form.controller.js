@@ -4,7 +4,7 @@ angular.module('SumoSurvey')
 			var formVm = this;
 
 			if (!AdminService.LoggedIn()) {
-				$location.url('/login');
+				$location.url('/admin/login');
 			}
            
 			formVm.gym = {

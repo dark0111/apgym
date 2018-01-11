@@ -30,6 +30,9 @@ passport.use(new LocalStrategy(
 		});
 	}));
 
+
+
+    
 passport.serializeUser(function (admin, done) {
 	debug('Serialize Succeeded: ' + admin);
 	done(null, admin.id);
@@ -49,7 +52,8 @@ passport.deserializeUser(function (adminId, done) {
 });
 
 exports.isAuthenticated = function (req, res, next) {
-	debug(req.session);
+	//debug(req.session);
 	if (req.isAuthenticated()) { return next(); }
 	res.sendStatus(401);
 };
+

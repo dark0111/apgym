@@ -3,14 +3,14 @@ module.exports = function (sequelize, DataTypes) {
   var User = sequelize.define('User', {
     user_w3_id: {
         type: DataTypes.STRING,
-        unique: true
+        primaryKey: true
     },
     username: DataTypes.STRING,
     user_call: DataTypes.STRING,
   }, {
       classMethods: {
         associate: function (models) {
-          User.hasMany(models.Feedback);
+          //User.hasMany(models.Feedback);
         }
       }
     });

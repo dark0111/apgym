@@ -1,12 +1,13 @@
 'use strict';
 module.exports = function (sequelize, DataTypes) {
   var Feedback = sequelize.define('Feedback', {
-    feedbackId: {
+    id: {
         type: DataTypes.INTEGER,
         primaryKey: true,
         autoIncrement: true
     },
-    feedback_date: DataTypes.DATE,
+    feedback_date: DataTypes.DATEONLY,
+    feedback_user: DataTypes.STRING(100),
     rating1: DataTypes.INTEGER,
     rating2: DataTypes.INTEGER,
     rating3: DataTypes.INTEGER,
@@ -22,7 +23,7 @@ module.exports = function (sequelize, DataTypes) {
       classMethods: {
         associate: function (models) {
           Feedback.belongsTo(models.Gym);
-          Feedback.belongsTo(models.User);
+          //Feedback.belongsToMany(models.User);
           Feedback.belongsTo(models.Speaker);
         }
       }

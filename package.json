@@ -17,6 +17,7 @@
   },
   "homepage": "https://github.com/mattjdev/sumosurvey#readme",
   "dependencies": {
+    "async": "^2.6.0",
     "bcrypt": "^1.0.2",
     "body-parser": "^1.13.0",
     "connect-session-sequelize": "^4.1.0",
@@ -27,8 +28,11 @@
     "express-session": "^1.11.3",
     "morgan": "^1.6.0",
     "mysql": "^2.7.0",
+    "node-excel-export": "^1.4.2",
     "passport": "^0.2.2",
+    "passport-http-bearer": "^1.0.1",
     "passport-local": "^1.0.0",
+    "passport-oauth2": "^1.4.0",
     "sequelize": "^3.2.0",
     "sequelize-cli": "^1.7.0"
   },

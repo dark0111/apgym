@@ -26,13 +26,14 @@
             <span class="icon-bar"></span>
           </button>
         
-        <a class="navbar-brand" href="/admin/list">AP Cloud Gym - Admin</span></a>
+        <a class="navbar-brand" href="/admin/list">AP Cloud Gym - User</span></a>
       </div>
       <!-- Collect the nav links, forms, and other content for toggling -->
       <div class="collapse navbar-collapse" id="navbar-collapse">
         <ul class="nav navbar-nav navbar-right">
           <li ng-show="!navVm.AdminLoggedIn()">
-            <a href="#" ng-click="navVm.AdminLogIn()">Admin Login</a>
+           <!--  <a href="#" ng-click="navVm.AdminLogIn()">User Login</a> -->
+            <a href="/login/w3" class="btn btn-primary"><span class="fa fa-facebook"></span> w3id login</a>
           </li>
           <li ng-show="navVm.AdminLoggedIn()" class="dropdown">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">YJH(admin) <span class="caret"></span></a>

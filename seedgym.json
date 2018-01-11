@@ -69,10 +69,10 @@
     "gyms": [{
         "gym_title":"2nd AP Cloud Gym in Korea",
         "gym_market":"KOREA",
-        "gym_location":"seoul",
+        "gym_location":"Seoul",
         "gym_description":"for telecommunication industry ",
-        "gym_date":"2018-02-21",
-        "gym_questionGroup":0,
+        "gym_date":"2017-12-21",
+        "gym_questionGroup":1,
         "gym_stat":false
     },
     {
@@ -80,9 +80,9 @@
         "gym_market":"ASEAN",
         "gym_location":"Hanoi",
         "gym_description":"This is TEST GYM",
-        "gym_date":"2016-01-31",
+        "gym_date":"2017-11-30",
         "gym_questionGroup":1,
-        "gym_stat":true
+        "gym_stat":false
     },
     {
         "gym_title":"1st AP Cloud Gym in Australia",
@@ -92,7 +92,118 @@
         "gym_date":"2018-01-31",
         "gym_questionGroup":1,
         "gym_stat":true
-    }
-    ]
-
+    }],
+    "users": [{
+        "user_w3_id":"testuser3@kr.ibm.com",
+        "username":"JH3",
+        "user_call":"010-9899-5555"
+    },
+    {
+        "user_w3_id":"testuser2@kr.ibm.com",
+        "username":"JH2",
+        "user_call":"010-1233-5555"
+    },
+    {
+        "user_w3_id":"testuser1@kr.ibm.com",
+        "username":"JH1",
+        "user_call":"010-4444-5555"
+    }],
+    "speakers": [{
+        "speaker_w3_id":"eg. joe.jones@au1.ibm.com",
+        "speaker_gym":1,
+        "speaker_name":"JH1",
+        "speaker_location":"Melbourne",
+        "speaker_market":"ANZ",
+        "speaker_account":"Star Group",
+        "speaker_client_background":"client is building a new entertainment precinct and needs new infrastructure and improve the customer experience",
+        "speaker_sales_journey":"02. Noticed",
+        "speaker_cloud_pattern":"Optimize",
+        "speaker_cloud_type":"On Premise,Hybrid Cloud",
+        "speaker_key_message":"involve ibm early in the design process to get optimised infrastructure and customer experience",
+        "speaker_client_role":"Chief Technical Officer,Chief Digital Officer",
+        "speaker_reg_date":"2018.1.1"
+    },
+    {
+        "speaker_w3_id":"eg. abc@au1.ibm.com",
+        "speaker_gym":2,
+        "speaker_name":"JH2",
+        "speaker_location":"Melbourne",
+        "speaker_market":"ANZ",
+        "speaker_account":"Fin Group",
+        "speaker_client_background":"client is building a new entertainment precinct and needs new infrastructure and improve the customer experience",
+        "speaker_sales_journey":"03. Lab",
+        "speaker_cloud_pattern":"Optimize",
+        "speaker_cloud_type":"On Premise,Hybrid Cloud",
+        "speaker_key_message":"involve ibm early in the design process to get optimised infrastructure and customer experience",
+        "speaker_client_role":"Chief Technical Officer,Chief Digital Officer",
+        "speaker_reg_date":"2018.1.1"
+    }],
+    "feedbacks": [{
+        "feedback_date":"2018-01-02",
+        "rating1":1,
+        "rating2":2,
+        "rating3":3,
+        "rating4":4,
+        "rating5":5,
+        "rating6":4,
+        "rating7":3,
+        "rating8":2,
+        "rating9":1,
+        "rating10":2,
+        "comment1":"comment",
+        "GymId":1,
+        "feedback_user":"testuser1@kr.ibm.com",
+        "SpeakerId":1
+    },
+    {
+        "feedback_date":"2018-01-02",
+        "rating1":1,
+        "rating2":2,
+        "rating3":3,
+        "rating4":4,
+        "rating5":5,
+        "rating6":4,
+        "rating7":3,
+        "rating8":2,
+        "rating9":1,
+        "rating10":2,
+        "comment1":"Some more focus and use cased with business ROI would have helped. Overall, an informative pitch.",
+        "GymId":3,
+        "feedback_user":"testuser2@kr.ibm.com",
+        "SpeakerId":2
+    },
+    {
+        "feedback_date":"2018-01-02",
+        "rating1":1,
+        "rating2":2,
+        "rating3":3,
+        "rating4":4,
+        "rating5":5,
+        "rating6":4,
+        "rating7":3,
+        "rating8":2,
+        "rating9":1,
+        "rating10":2,
+        "comment1":"Some more focus and use cased with business ROI would have helped. Overall, an informative pitch.",
+        "GymId":2,
+        "feedback_user":"testuser3@kr.ibm.com",
+        "SpeakerId":2
+    },
+    {
+        "feedback_date":"2018-01-02",
+        "rating1":1,
+        "rating2":2,
+        "rating3":3,
+        "rating4":4,
+        "rating5":5,
+        "rating6":4,
+        "rating7":3,
+        "rating8":2,
+        "rating9":1,
+        "rating10":2,
+        "comment1":"Some more focus and use cased with business ROI would have helped. Overall, an informative pitch.",
+        "GymId":1,
+        "feedback_user":"testuser4@kr.ibm.com",
+        "SpeakerId":1
+    }]
 }

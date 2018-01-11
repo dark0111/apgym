@@ -7,5 +7,4 @@ var sequelize = process.env.DB_CONFIG_URL ? new Sequelize(process.env.DB_CONFIG_
   db_config.password,
   db_config
 );
-
 module.exports = sequelize;

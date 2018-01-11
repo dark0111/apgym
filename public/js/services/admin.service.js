@@ -19,7 +19,7 @@ angular.module('SumoSurvey')
 				Restangular.all('admin').doPOST({
 					username: username,
 					password: password
-				}, 'login').then(function (message) {
+				}, 'admin/login').then(function (message) {
 					console.log('Success: ' + message);
 					loggedIn = true;
 					if (cb) cb(true);

@@ -18,12 +18,12 @@ var checkLoggedin = ['$q', '$http', '$location', 'AdminService',
       else {
         AdminService.setUrlAfterLogin($location.url());
         deferred.reject();
-        $location.url('/login');
+        $location.url('/admin/login');
       }
     }).error(function (err) {
       AdminService.setUrlAfterLogin($location.url());
       deferred.reject();
-      $location.url('/login');
+      $location.url('/admin/login');
     });
 
     return deferred.promise;
@@ -40,7 +40,7 @@ angular.module('SumoSurvey', [
         .when('/', {
           templateUrl: 'partials/survey.html'
         })
-        .when('/login', {
+        .when('/admin/login', {
           templateUrl: 'partials/login.html'
         })
         .when('/admin/list', {
@@ -49,8 +49,9 @@ angular.module('SumoSurvey', [
               loggedIn: checkLoggedin
             }
           })
-
-
+        .when('/excelexport/admin', {
+           
+          })
         .when('/admin/form/:gym_id?', {
             templateUrl: 'partials/form.html',
             resolve: {
